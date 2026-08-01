@@ -26,7 +26,7 @@ const socialLinks = [
     },
     {
         name: "LinkedIn",
-        href: "https://www.linkedin.com/in/daniell-datuashvili-34bb62359/",
+        href: "https://www.linkedin.com/in/daniell-datuashvili",
     },
     {
         name: "Instagram",
@@ -176,7 +176,7 @@ export default function Contact() {
                                 Contact information
                             </p>
 
-                            <p className="contact-email mt-6 font-serif text-3xl sm:text-4xl">
+                            <p className="contact-email mt-6 font-serif text-3xl sm:text-2xl">
                                 {CONTACT_EMAIL}
                             </p>
                         </div>
