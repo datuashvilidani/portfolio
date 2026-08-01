@@ -176,7 +176,7 @@ export default function Contact() {
                                 Contact information
                             </p>
 
-                            <p className="contact-email mt-6 font-serif text-3xl sm:text-2xl">
+                            <p className="contact-email mt-6 font-serif text-3xl sm:text-4xl">
                                 {CONTACT_EMAIL}
                             </p>
                         </div>
