@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import weddingPreview from "../assets/wedding.png";
 import sadaPreview from "../assets/sada.png";
+import clawMarks from "../assets/claw-marks.png";
 
 const projects = [
     {
@@ -136,8 +137,8 @@ export default function Projects() {
         >
             {/* Decorative background animations */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="old-money-orbit old-money-orbit-one" />
-                <div className="old-money-orbit old-money-orbit-two" />
+                <img src={clawMarks} alt="" className="old-money-claw old-money-claw-one" />
+                <img src={clawMarks} alt="" className="old-money-claw old-money-claw-two" />
 
                 <div className="old-money-floating-mark old-money-mark-one">
                     01
@@ -252,7 +253,7 @@ export default function Projects() {
                                     >
                                         <span>Visit live project</span>
 
-                                        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition duration-500 group-hover:bg-white group-hover:text-[#06182b]">
+                                        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition duration-500 group-hover:bg-white group-hover:text-[#34090f]">
                                             <ArrowIcon />
                                         </span>
                                     </a>

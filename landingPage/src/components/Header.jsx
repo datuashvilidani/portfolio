@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import portraitImage from "../assets/me-cutout.png";
+import pantherImage from "../assets/panther-lying.png";
+import catImage from "../assets/cat-sitting.png";
 
 const navigation = [
     { name: "Home", href: "#home" },
@@ -35,11 +37,11 @@ export default function Header() {
     }, [menuOpen]);
 
     return (
+        <>
         <header id="home" className="hero-section relative overflow-hidden bg-white text-black">
             {/* Minimal background lines */}
             <div className="pointer-events-none absolute inset-0">
                 <div className="skills-background-line skills-background-line-one" />
-                <div className="hero-background-circle" />
             </div>
 
             {/* Navigation */}
@@ -183,16 +185,15 @@ export default function Header() {
                 className="hero-portrait"
             />
 
-            {/* Bottom details */}
-            <div
-                className="hero-drop hero-scroll absolute bottom-10 left-8 z-10 hidden items-center gap-4 sm:flex lg:left-12"
-                style={{ "--delay": "900ms" }}
-            >
-                <span className="hero-scroll-line" />
-                <span className="text-xs uppercase tracking-[0.35em] text-black/45">
-                    Scroll
-                </span>
-            </div>
         </header>
+
+        {/* Panther lying on the bottom edge of the header, front paws hanging
+            down over the Projects section. Lives outside <header> because the
+            header clips anything that overflows it. */}
+        <div className="hero-panther" aria-hidden="true">
+            <img src={pantherImage} alt="" className="hero-pet hero-pet-panther" />
+            <img src={catImage} alt="" className="hero-pet hero-pet-cat" />
+        </div>
+        </>
     );
 }

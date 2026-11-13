@@ -47,7 +47,7 @@ body {
     radial-gradient(circle at 88% 75%,
       rgba(255, 255, 255, 0.035),
       transparent 30%),
-    linear-gradient(135deg, #03101e 0%, #071b31 50%, #041426 100%);
+    linear-gradient(135deg, #170406 0%, #34090f 50%, #1f0509 100%);
   color: #ffffff;
 }
 
@@ -65,23 +65,23 @@ body {
   background:
     radial-gradient(
       circle at 12% 18%,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.5) 24%,
+      rgba(150, 32, 46, 0.55) 0%,
+      rgba(110, 21, 31, 0.3) 24%,
       transparent 54%
     ),
     radial-gradient(
       circle at 68% 0%,
-      rgba(0, 0, 0, 0.75) 0%,
-      rgba(0, 0, 0, 0.4) 22%,
+      rgba(140, 28, 40, 0.5) 0%,
+      rgba(101, 19, 28, 0.26) 22%,
       transparent 50%
     ),
     radial-gradient(
       circle at 94% 24%,
-      rgba(0, 0, 0, 0.65) 0%,
+      rgba(150, 32, 46, 0.42) 0%,
       transparent 42%
     );
   filter: blur(28px);
-  opacity: 0.95;
+  opacity: 0.9;
   transform: translate3d(0, 0, 0);
   animation: old-money-red-traces 11s ease-in-out infinite alternate;
   mask-image: linear-gradient(
@@ -125,38 +125,46 @@ body {
 
 /* Background animation */
 
-.old-money-orbit {
+/* Claw marks: slashed in from top-right to bottom-left, the direction
+   the strokes run, when the section scrolls into view */
+.old-money-claw {
   position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 9999px;
+  height: auto;
+  max-width: none;
+  opacity: 0.75;
+  user-select: none;
+  clip-path: inset(0 0 100% 100%);
 }
 
-.old-money-orbit::before {
-  position: absolute;
-  top: 50%;
-  left: -4px;
-  width: 8px;
-  height: 8px;
-  content: "";
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+.old-money-claw-one {
+  top: 6%;
+  right: 3%;
+  width: clamp(200px, 22vw, 380px);
 }
 
-.old-money-orbit-one {
-  top: 8%;
-  right: -230px;
-  width: 520px;
-  height: 520px;
-  animation: old-money-orbit-spin 28s linear infinite;
+.old-money-claw-two {
+  bottom: 6%;
+  left: 5%;
+  width: clamp(140px, 14vw, 250px);
+  transform: rotate(180deg);
 }
 
-.old-money-orbit-two {
-  bottom: 5%;
-  left: -180px;
-  width: 360px;
-  height: 360px;
-  animation: old-money-orbit-spin-reverse 24s linear infinite;
+.projects-visible .old-money-claw {
+  animation: old-money-claw-slash 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+.projects-visible .old-money-claw-one {
+  animation-delay: 600ms;
+}
+
+.projects-visible .old-money-claw-two {
+  animation-delay: 900ms;
+}
+
+@keyframes old-money-claw-slash {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 .old-money-floating-mark {
@@ -289,7 +297,7 @@ body {
   width: 100%;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: #06182b;
+  background: #1f0509;
   transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -439,18 +447,6 @@ body {
   }
 }
 
-@keyframes old-money-orbit-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes old-money-orbit-spin-reverse {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
 @keyframes old-money-mark-float {
 
   0%,
@@ -517,7 +513,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
 
-  .old-money-orbit,
   .old-money-floating-mark,
   .old-money-background-line,
   .old-money-card-shine {
@@ -552,7 +547,7 @@ body {
 }
 
 
-/* Navy traces carried over from the Projects section */
+/* Dark-red traces carried over from the Projects section */
 
 .skills-section::after {
   position: absolute;
@@ -566,19 +561,19 @@ body {
   background:
     radial-gradient(
       circle at 14% 12%,
-      rgba(3, 16, 30, 0.62) 0%,
-      rgba(7, 27, 49, 0.34) 24%,
+      rgba(23, 4, 6, 0.62) 0%,
+      rgba(52, 9, 15, 0.34) 24%,
       transparent 54%
     ),
     radial-gradient(
       circle at 68% 0%,
-      rgba(7, 27, 49, 0.54) 0%,
-      rgba(4, 20, 38, 0.28) 22%,
+      rgba(52, 9, 15, 0.54) 0%,
+      rgba(31, 5, 9, 0.28) 22%,
       transparent 50%
     ),
     radial-gradient(
       circle at 96% 18%,
-      rgba(4, 20, 38, 0.4) 0%,
+      rgba(31, 5, 9, 0.4) 0%,
       transparent 42%
     );
   filter: blur(32px);
@@ -1902,28 +1897,6 @@ a.contact-detail-row:hover {
   bottom: 0;
 }
 
-.hero-background-circle {
-  position: absolute;
-  bottom: -220px;
-  left: -160px;
-  width: 460px;
-  height: 460px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 9999px;
-  animation: skills-circle-rotate 32s linear infinite;
-}
-
-.hero-background-circle::before {
-  position: absolute;
-  top: 50%;
-  right: -4px;
-  width: 8px;
-  height: 8px;
-  content: "";
-  border-radius: 9999px;
-  background: black;
-}
-
 /* Entrance */
 
 .hero-drop {
@@ -1933,18 +1906,13 @@ a.contact-detail-row:hover {
     cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-small-line,
-.hero-scroll-line {
+.hero-small-line {
   display: block;
   width: 0;
   height: 1px;
   background: black;
   animation: skills-small-line-reveal 1s 450ms cubic-bezier(0.16, 1, 0.3, 1)
     forwards;
-}
-
-.hero-scroll-line {
-  animation-delay: 1100ms;
 }
 
 /* Navigation */
@@ -2033,16 +2001,36 @@ a.contact-detail-row:hover {
   border-color: black;
 }
 
+/* Shared portrait geometry: the panther beside the portrait reads these too */
+:root {
+  --portrait-right: calc(20px + clamp(14px, 4.5vw, 86px) - 2px);
+  --portrait-height: 54svh;
+  /* width / height of me-cutout.png (296 x 750) */
+  --portrait-ratio: 0.3947;
+}
+
+@media (max-width: 639px) {
+  :root {
+    --portrait-right: -3px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --portrait-height: min(calc(100svh - 110px), 1000px);
+  }
+}
+
 /* Portrait: right edge rests on the frame's right line,
    feet stand on the frame's bottom line */
 
 .hero-portrait {
   position: absolute;
-  right: calc(var(--hero-frame) + clamp(14px, 4.5vw, 86px) - 2px);
+  right: var(--portrait-right);
   bottom: 0;
   z-index: 5;
   width: auto;
-  height: 54svh;
+  height: var(--portrait-height);
   max-width: none;
   pointer-events: none;
   user-select: none;
@@ -2069,10 +2057,6 @@ a.contact-detail-row:hover {
     --hero-frame: 12px;
   }
 
-  .hero-portrait {
-    right: -3px;
-  }
-
   .hero-small-line {
     display: none;
   }
@@ -2090,18 +2074,248 @@ a.contact-detail-row:hover {
     padding-top: 0;
     padding-bottom: 6rem;
   }
-
-  .hero-portrait {
-    height: min(calc(100svh - 110px), 1000px);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-drop,
   .hero-portrait,
-  .hero-small-line,
-  .hero-scroll-line {
+  .hero-small-line {
     animation-duration: 1ms;
     animation-delay: 0ms;
+  }
+}
+
+/* =========================================================
+   PANTHER ON THE HEADER'S BOTTOM EDGE
+========================================================= */
+
+/* zero-height strip sitting exactly on the line between header and projects */
+.hero-panther {
+  position: relative;
+  z-index: 20;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Each animal rests on the line at its own height in the image and hangs
+   the rest (paws / tail) over the projects section:
+   --hang = share of the image below the resting line */
+.hero-pet {
+  --pet-gap: 40px;
+  --pet-tilt: 0deg;
+  position: absolute;
+  bottom: 0;
+  /* sits just left of the portrait: its right offset plus its width */
+  right: calc(
+    var(--portrait-right) + var(--portrait-height) * var(--portrait-ratio) +
+      var(--pet-gap)
+  );
+  height: auto;
+  max-width: none;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(var(--hang)) rotate(var(--pet-tilt));
+  animation: hero-pet-settle 1.2s 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* desktop & tablet: the panther, front paws hanging (body on the line
+   65.1% down the image) */
+.hero-pet-panther {
+  --hang: 34.9%;
+  --pet-tilt: -3deg;
+  width: clamp(190px, 30vw, 560px);
+  /* tilt around the front of the body, where it rests on the edge */
+  transform-origin: 72% 65.1%;
+}
+
+/* phones: the cat, sitting on the line (58.1% down the image) with its
+   tail hanging */
+.hero-pet-cat {
+  --hang: 41.9%;
+  --pet-gap: 40px;
+  display: none;
+  width: 36vw;
+}
+
+@keyframes hero-pet-settle {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--hang) - 24px)) rotate(var(--pet-tilt));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(var(--hang)) rotate(var(--pet-tilt));
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-pet-panther {
+    display: none;
+  }
+
+  .hero-pet-cat {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pet {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+}
+
+/* =========================================================
+   SIDE NAVIGATION (links that follow you down the page)
+========================================================= */
+
+.side-nav {
+  --item-size: 46px;
+  --item-gap: 12px;
+  position: fixed;
+  top: 50%;
+  left: 18px;
+  z-index: 90;
+  display: none;
+  flex-direction: column;
+  gap: var(--item-gap);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .side-nav {
+    display: flex;
+  }
+}
+
+/* thin vertical line threading through the icons */
+.side-nav-line {
+  position: absolute;
+  top: -48px;
+  bottom: -48px;
+  left: calc(var(--item-size) / 2);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(128, 128, 128, 0.55) 18%,
+    rgba(128, 128, 128, 0.55) 82%,
+    transparent
+  );
+  opacity: 0;
+  transform: scaleY(0);
+  transition:
+    opacity 500ms ease,
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.side-nav.is-visible .side-nav-line {
+  opacity: 1;
+  transform: scaleY(1);
+  transition-delay: 250ms;
+}
+
+.side-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: var(--item-size);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  background: white;
+  color: black;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  pointer-events: auto;
+  transition:
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 500ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+/* hidden: tucked up where the header links live (top-right), small and
+   transparent, so showing the rail looks like the links flying over */
+.side-nav:not(.is-visible) .side-nav-item {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(
+      calc(100vw - 520px + var(--i) * 110px),
+      calc(-50vh - (var(--i) - 1.5) * (var(--item-size) + var(--item-gap)))
+    )
+    scale(0.6);
+  transition-delay: calc((3 - var(--i)) * 50ms);
+}
+
+/* arriving one after another */
+.side-nav.is-arriving .side-nav-item {
+  transition-delay: calc(var(--i) * 90ms);
+}
+
+.side-nav-icon {
+  display: flex;
+  flex-shrink: 0;
+  width: calc(var(--item-size) - 2px);
+  height: calc(var(--item-size) - 2px);
+  align-items: center;
+  justify-content: center;
+}
+
+.side-nav-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.side-nav-label {
+  max-width: 0;
+  padding-right: 0;
+  overflow: hidden;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 300ms ease;
+}
+
+/* names stay out while the links arrive, then fold away into icons */
+.side-nav.is-arriving .side-nav-label {
+  max-width: 140px;
+  padding-right: 20px;
+  opacity: 1;
+}
+
+/* hover / keyboard focus: slide out and show the name */
+.side-nav.is-visible:not(.is-arriving) .side-nav-item:hover,
+.side-nav.is-visible:not(.is-arriving) .side-nav-item:focus-visible {
+  transform: translateX(10px);
+}
+
+.side-nav-item:hover .side-nav-label,
+.side-nav-item:focus-visible .side-nav-label {
+  max-width: 140px;
+  padding-right: 20px;
+  opacity: 1;
+}
+
+/* section currently on screen */
+.side-nav-item.is-active {
+  border-color: black;
+  background: black;
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-nav-item,
+  .side-nav-line,
+  .side-nav-label {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
   }
 }
