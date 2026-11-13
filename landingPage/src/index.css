@@ -1828,8 +1828,10 @@ a.contact-detail-row:hover {
 
   .contact-email {
     max-width: 100%;
-    font-size: 1.65rem;
-    overflow-wrap: anywhere;
+    /* scale with the screen so the address stays on one line;
+       on very narrow phones it may only break after the "@" */
+    font-size: clamp(1.1rem, 5.6vw, 1.65rem);
+    overflow-wrap: normal;
   }
 
   .contact-submit-button {
