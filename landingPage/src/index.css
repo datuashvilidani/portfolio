@@ -1480,6 +1480,12 @@ body {
   white-space: nowrap;
 }
 
+/* the two halves of the address ("name@" and "domain") only separate
+   on phones, where .contact-email switches back to normal wrapping */
+.contact-email-part {
+  display: inline-block;
+}
+
 .contact-email::after {
   position: absolute;
   right: 60px;

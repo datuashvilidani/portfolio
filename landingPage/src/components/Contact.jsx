@@ -177,9 +177,12 @@ export default function Contact() {
                             </p>
 
                             <p className="contact-email mt-6 font-serif text-3xl sm:text-4xl">
-                                {CONTACT_EMAIL.split("@")[0]}@
-                                <wbr />
-                                {CONTACT_EMAIL.split("@")[1]}
+                                <span className="contact-email-part">
+                                    {CONTACT_EMAIL.split("@")[0]}@
+                                </span>
+                                <span className="contact-email-part">
+                                    {CONTACT_EMAIL.split("@")[1]}
+                                </span>
                             </p>
                         </div>
 
