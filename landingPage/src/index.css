@@ -1477,6 +1477,7 @@ body {
 
 .contact-email {
   position: relative;
+  white-space: nowrap;
 }
 
 .contact-email::after {
@@ -1832,6 +1833,7 @@ a.contact-detail-row:hover {
        on very narrow phones it may only break after the "@" */
     font-size: clamp(1.1rem, 5.6vw, 1.65rem);
     overflow-wrap: normal;
+    white-space: normal;
   }
 
   .contact-submit-button {
