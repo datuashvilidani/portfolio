@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import pantherImage from "../assets/panther.jpg";
 import woodImage from "../assets/wood.jpg";
+import SkillsOrbit from "./SkillsOrbit";
 
 const skillGroups = [
     {
@@ -13,7 +14,7 @@ const skillGroups = [
         number: "02",
         title: "Backend",
         description: "Secure backend systems, authentication and application logic.",
-        skills: ["Django", "Python", "Node.js"],
+        skills: ["Django", "Python", "Node.js", "SQL"],
     },
     {
         number: "03",
@@ -29,6 +30,7 @@ const technologies = [
     "Python",
     "Django",
     "Node.js",
+    "SQL",
     "Tailwind CSS",
     "HTML",
     "CSS",
@@ -271,30 +273,15 @@ export default function Skills() {
                         </div>
 
                         <span className="hidden font-serif text-5xl italic text-black/15 sm:block">
-                            08
+                            {String(technologies.length).padStart(2, "0")}
                         </span>
                     </div>
 
-                    <div className="mt-10 border-t border-black">
-                        {technologies.map((technology, index) => (
-                            <div
-                                key={technology}
-                                className="skills-technology-row skills-drop"
-                                style={{
-                                    "--delay": `${index * 70 + 900}ms`,
-                                }}
-                            >
-                                <span className="text-xs text-black/35">
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
-
-                                <span className="font-serif text-2xl sm:text-3xl">
-                                    {technology}
-                                </span>
-
-                                <span className="skills-technology-arrow">↘</span>
-                            </div>
-                        ))}
+                    <div
+                        className="skills-drop mt-10 border-t border-black"
+                        style={{ "--delay": "950ms" }}
+                    >
+                        <SkillsOrbit technologies={technologies} />
                     </div>
                 </div>
             </div>

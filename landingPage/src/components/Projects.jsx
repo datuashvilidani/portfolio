@@ -1,17 +1,17 @@
 import { useEffect, useRef } from "react";
-import nazeefPreview from "../assets/nazeef.png";
+import weddingPreview from "../assets/wedding.png";
 import sadaPreview from "../assets/sada.png";
 
 const projects = [
     {
         number: "01",
-        name: "Nazeef",
-        type: "Design Showcase",
+        name: "Sofia & Leon",
+        type: "Digital Wedding Invitation",
         description:
-            "A design-focused website created to showcase polished layouts, typography, visual direction and modern interface concepts.",
-        url: "https://nazeef.vercel.app/",
-        features: ["UI Design", "Visual Showcase", "Modern Layout"],
-        preview: "nazeef",
+            "An interactive digital wedding invitation with a starry-night theme, a wax-seal opening animation and elegant typography that sets the tone for the celebration.",
+        url: "https://sofialeonwedding.vercel.app/",
+        features: ["Interactive Invitation", "Animations", "Elegant Typography"],
+        preview: "wedding",
         theme: "navy",
     },
     {
@@ -42,7 +42,7 @@ function ArrowIcon() {
     );
 }
 
-function NazeefPreview() {
+function WeddingPreview() {
     return (
         <div className="old-money-preview">
             <div className="preview-browser-header">
@@ -52,18 +52,18 @@ function NazeefPreview() {
                     <span />
                 </div>
 
-                <p>nazeef.vercel.app</p>
+                <p>sofialeonwedding.vercel.app</p>
             </div>
 
             <a
-                href="https://nazeef.vercel.app/"
+                href="https://sofialeonwedding.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
                 className="block overflow-hidden"
             >
                 <img
-                    src={nazeefPreview}
-                    alt="Nazeef website preview"
+                    src={weddingPreview}
+                    alt="Sofia & Leon digital wedding invitation preview"
                     className="block h-auto w-full"
                 />
             </a>
@@ -201,8 +201,8 @@ export default function Projects() {
                                             : "lg:order-1"
                                     }
                                 >
-                                    {project.preview === "nazeef" ? (
-                                        <NazeefPreview />
+                                    {project.preview === "wedding" ? (
+                                        <WeddingPreview />
                                     ) : (
                                         <SadaPreview />
                                     )}
