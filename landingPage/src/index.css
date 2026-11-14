@@ -1304,7 +1304,9 @@ body {
     height: 34px;
   }
 }
-@media (min-width: 769px) {
+/* 90% page scale for desktop computers only. Touch screens (iPads, tablets)
+   are excluded: there it pushed the page off-screen on both sides. */
+@media (min-width: 1280px) and (hover: hover) and (pointer: fine) {
   #root {
     position: relative;
     left: -5.555%;
