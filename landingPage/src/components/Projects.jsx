@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import weddingPreview from "../assets/wedding.png";
 import sadaPreview from "../assets/sada.png";
+import weddingGalleryPreview from "../assets/wedding-gallery.jpg";
 import clawMarks from "../assets/claw-marks.png";
 
 const projects = [
@@ -11,8 +12,10 @@ const projects = [
         description:
             "An interactive digital wedding invitation with a starry-night theme, a wax-seal opening animation and elegant typography that sets the tone for the celebration.",
         url: "https://sofialeonwedding.vercel.app/",
+        domain: "sofialeonwedding.vercel.app",
+        image: weddingPreview,
+        imageAlt: "Sofia & Leon digital wedding invitation preview",
         features: ["Interactive Invitation", "Animations", "Elegant Typography"],
-        preview: "wedding",
         theme: "navy",
     },
     {
@@ -22,9 +25,24 @@ const projects = [
         description:
             "A complete website running on its own domain with full backend logic, secure email verification, login and user registration.",
         url: "https://sadaeu.com/",
+        domain: "sadaeu.com",
+        image: sadaPreview,
+        imageAlt: "Sada AI website preview",
         features: ["Backend Logic", "Email Verification", "Authentication"],
-        preview: "sada",
         theme: "black",
+    },
+    {
+        number: "03",
+        name: "Lake Como Wedding",
+        type: "Invitation & Photo Gallery",
+        description:
+            "A digital wedding invitation with an envelope-opening intro, live countdown, schedule and venue map, plus a shared photo gallery built on Supabase where guests snap and upload pictures straight from their phones.",
+        url: "https://invitation-taupe-delta.vercel.app/",
+        domain: "invitation-taupe-delta.vercel.app",
+        image: weddingGalleryPreview,
+        imageAlt: "Wedding invitation with guest photo gallery preview",
+        features: ["Supabase", "Guest Photo Uploads", "Live Countdown"],
+        theme: "navy",
     },
 ];
 function ArrowIcon() {
@@ -43,9 +61,12 @@ function ArrowIcon() {
     );
 }
 
-function WeddingPreview() {
+// Screenshot of a project inside a minimal browser frame
+function ProjectPreview({ project }) {
+    const isBlack = project.theme === "black";
+
     return (
-        <div className="old-money-preview">
+        <div className={`old-money-preview ${isBlack ? "old-money-preview-sada" : ""}`}>
             <div className="preview-browser-header">
                 <div className="flex gap-1.5">
                     <span />
@@ -53,55 +74,30 @@ function WeddingPreview() {
                     <span />
                 </div>
 
-                <p>sofialeonwedding.vercel.app</p>
+                <p>{project.domain}</p>
             </div>
 
             <a
-                href="https://sofialeonwedding.vercel.app/"
+                href={project.url}
                 target="_blank"
                 rel="noreferrer"
-                className="block overflow-hidden"
+                className={`block overflow-hidden ${isBlack ? "bg-black" : ""}`}
             >
                 <img
-                    src={weddingPreview}
-                    alt="Sofia & Leon digital wedding invitation preview"
+                    src={project.image}
+                    alt={project.imageAlt}
                     className="block h-auto w-full"
                 />
             </a>
 
-            <span className="preview-corner preview-corner-top" />
-            <span className="preview-corner preview-corner-bottom" />
+            {!isBlack && (
+                <>
+                    <span className="preview-corner preview-corner-top" />
+                    <span className="preview-corner preview-corner-bottom" />
+                </>
+            )}
         </div>
     );
-}
-
-function SadaPreview() {
-  return (
-    <div className="old-money-preview old-money-preview-sada">
-      <div className="preview-browser-header">
-        <div className="flex gap-1.5">
-          <span />
-          <span />
-          <span />
-        </div>
-
-        <p>sadaeu.com</p>
-      </div>
-
-      <a
-        href="https://sadaeu.com/"
-        target="_blank"
-        rel="noreferrer"
-        className="block overflow-hidden bg-black"
-      >
-        <img
-          src={sadaPreview}
-          alt="Sada AI website preview"
-          className="block h-auto w-full"
-        />
-      </a>
-    </div>
-  );
 }
 
 export default function Projects() {
@@ -139,14 +135,6 @@ export default function Projects() {
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <img src={clawMarks} alt="" className="old-money-claw old-money-claw-one" />
                 <img src={clawMarks} alt="" className="old-money-claw old-money-claw-two" />
-
-                <div className="old-money-floating-mark old-money-mark-one">
-                    01
-                </div>
-
-                <div className="old-money-floating-mark old-money-mark-two">
-                    II
-                </div>
 
                 <div className="old-money-background-line old-money-line-one" />
                 <div className="old-money-background-line old-money-line-two" />
@@ -202,11 +190,7 @@ export default function Projects() {
                                             : "lg:order-1"
                                     }
                                 >
-                                    {project.preview === "wedding" ? (
-                                        <WeddingPreview />
-                                    ) : (
-                                        <SadaPreview />
-                                    )}
+                                    <ProjectPreview project={project} />
                                 </div>
 
                                 {/* Information */}
@@ -216,12 +200,12 @@ export default function Projects() {
                                         : "lg:order-2 lg:pl-8"
                                         }`}
                                 >
-                                    <div className="flex items-center justify-between border-b border-white/15 pb-5">
+                                    <div className="flex items-center justify-between gap-4 border-b border-white/15 pb-5">
                                         <p className="old-money-project-number">
                                             {project.number}
                                         </p>
 
-                                        <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+                                        <p className="text-right text-xs uppercase tracking-[0.3em] text-white/45">
                                             {project.type}
                                         </p>
                                     </div>
